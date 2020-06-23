@@ -1,6 +1,6 @@
 module.exports = {
   someSidebar: {
-    Docusaurus: ['doc1', 'doc2', 'doc3'],
-    Features: ['mdx'],
+    "Simple IoT": ["overview"],
+    "Portal/Edge": ["go/development", "go/api", "go/envvars", "go/faq"],
   },
 };
