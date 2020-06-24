@@ -1,6 +1,9 @@
-[submodule "docs/simpleiot"]
-	path = docs/simpleiot
-	url = https://github.com/simpleiot/simpleiot
 [submodule "simpleiot"]
 	path = simpleiot
 	url = https://github.com/simpleiot/simpleiot
+[submodule "hardware"]
+	path = hardware
+	url = https://github.com/simpleiot/hardware.git
+[submodule "firmware"]
+	path = firmware
+	url = https://github.com/simpleiot/firmware.git
