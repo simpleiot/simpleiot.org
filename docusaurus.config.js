@@ -1,6 +1,6 @@
 module.exports = {
   title: "Simple IoT",
-  tagline: "The tagline of my site",
+  tagline: "IoT building blocks for your project",
   url: "https://simpleiot.org",
   baseUrl: "/",
   favicon: "img/favicon.ico",
@@ -42,14 +42,14 @@ module.exports = {
           homePageId: "overview",
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl:
-            "https://github.com/facebook/docusaurus/edit/master/website/",
+          //editUrl:
+          // "https://github.com/facebook/docusaurus/edit/master/website/",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl:
-            "https://github.com/facebook/docusaurus/edit/master/website/blog/",
+          //editUrl:
+          //"https://github.com/facebook/docusaurus/edit/master/website/blog/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
