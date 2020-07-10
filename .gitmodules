@@ -1,9 +1,9 @@
 [submodule "simpleiot"]
-	path = simpleiot
+	path = projects/go
 	url = https://github.com/simpleiot/simpleiot
 [submodule "hardware"]
-	path = hardware
+	path = projects/hw
 	url = https://github.com/simpleiot/hardware.git
 [submodule "firmware"]
-	path = firmware
+	path = projects/fw
 	url = https://github.com/simpleiot/firmware.git
