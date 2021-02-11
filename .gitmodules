@@ -2,3 +2,6 @@
 [submodule "source/hardware"]
 	path = source/hardware
 	url = https://github.com/simpleiot/hardware.git
+[submodule "themes/book"]
+	path = themes/book
+	url = https://github.com/getzola/book
