@@ -1,33 +1,53 @@
-# Website
+# simpleiot.org
 
-This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
+Website for [Simple IoT](https://github.com/simpleiot/simpleiot), built with
+[Zola](https://www.getzola.org/).
 
-### Installation
+The project documentation lives separately at
+[docs.simpleiot.org](https://docs.simpleiot.org), generated from the `docs/`
+directory of the [simpleiot](https://github.com/simpleiot/simpleiot) repository.
 
-```
-$ yarn
-```
+## Local development
 
-### Local Development
-
-```
-$ yarn start
-```
-
-This command starts a local development server and open up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
+```sh
+zola serve              # http://127.0.0.1:1111, live reload
+zola build              # output to public/
+zola check              # validate links and templates
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+`source envsetup.sh` provides `siot_web_serve`, `siot_web_build`, and
+`siot_web_check` wrappers for the same commands, along with `siot_web_deploy`.
 
-### Deployment
+## Layout
 
+- `config.toml` — site config, including the external URLs used across the
+  templates
+- `content/_index.md` — landing page (renders via `templates/index.html`)
+- `content/blog/` — blog posts
+- `content/community.md`, `content/videos.md` — standalone pages
+- `templates/` — Tera templates (`base.html`, `index.html`, `page.html`,
+  `section.html`, `videos.html`)
+- `sass/main.scss` — single SCSS bundle, compiled to `main.css`
+- `static/images/` — logos
+- `static/snippets/` — code shown on the landing page
+
+The videos page reads the Simple IoT YouTube channel feed at build time, so
+rebuilding the site picks up new videos. The channel ID is set in `config.toml`.
+
+## Theme
+
+Custom dark theme built around the orange and slate of the sIoT logo. No
+external theme dependency. Colors live as SCSS variables at the top of
+`sass/main.scss`.
+
+## Deploying
+
+```sh
+source envsetup.sh
+siot_web_deploy
 ```
-$ GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
-```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+This builds the site and rsyncs `public/` to
+`bec-systems.com:/srv/http/siot/website/`, alongside the documentation site at
+`/srv/http/siot/docs/`. The build has no runtime dependencies, so any other
+static host works equally well.

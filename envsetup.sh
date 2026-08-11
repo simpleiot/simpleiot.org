@@ -1,50 +1,40 @@
-#!/bin/sh
+#!/bin/bash
 
-# need to make a function that replaces the following links
-# in markdown files:
-# ![gw](gw.jpg)
-# with
-# ![gw](/img/projects/gw.jpg)
-# but not include links like:
-# ![conn](https://www.wiredwatts.com/img/products/m/pt3c6km3-1_m.jpg)
+# Build and deploy script for the Simple IoT website
+# Usage: source envsetup.sh
 
-siot_projects="go hw fw"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DEPLOY_TARGET="bec-systems.com:/srv/http/siot/website/"
 
-siot_find_md_files() {
-  for p in $siot_projects; do
-    for f in "docs/$p/"*.md; do
-      ret="${ret} ${f}"
-    done
-  done
-  echo "$ret"
+siot_web_deploy() {
+	echo "Building site with Zola..."
+	cd "$SCRIPT_DIR" || return 1
+	zola build || return 1
+	echo "Deploying to $DEPLOY_TARGET..."
+	rsync -avz --delete public/ "$DEPLOY_TARGET"
 }
 
-siot_update_image_links() {
-  file=$1
-  project=$(echo "$1" | sed 's/docs\/\(.*\)\/.*/\1/')
-  echo "project: $project"
-  # FIXME this is still replacing all links, even external
-  sed -i "s/\(!\[.*\]\)(\(.*\))/\1(\/img\/projects\/${project}\/\2)/g" "$file"
+siot_web_serve() {
+	echo "Starting Zola development server..."
+	cd "$SCRIPT_DIR" || return 1
+	zola serve
 }
 
-siot_update_docs() {
-  echo "updating docs"
-  img_dest=static/img/projects
-  rm -rf docs/go docs/hw docs/fw "img_dest"
-  for project in $siot_projects; do
-    src=projects/$project/docs
-    dest=docs/$project
-    mkdir "$dest"
-    mkdir -p "$img_dest/$project"
-    cp "$src"/*.md "$dest/"
-    cp "$src"/*.png "$img_dest/$project"
-    cp "$src"/*.jpg "$img_dest/$project"
-  done
-
-  md_files=$(siot_find_md_files)
-  echo "updating links in files $md_files"
-  for f in $md_files; do
-    echo "processing $f"
-    siot_update_image_links "$f"
-  done
+siot_web_build() {
+	echo "Building site with Zola..."
+	cd "$SCRIPT_DIR" || return 1
+	zola build
 }
+
+siot_web_check() {
+	echo "Checking links and templates..."
+	cd "$SCRIPT_DIR" || return 1
+	zola check
+}
+
+echo "Simple IoT website environment loaded."
+echo "Available commands:"
+echo "  siot_web_deploy - Build and deploy to $DEPLOY_TARGET"
+echo "  siot_web_serve  - Start local development server"
+echo "  siot_web_build  - Build the site into public/"
+echo "  siot_web_check  - Validate links and templates"

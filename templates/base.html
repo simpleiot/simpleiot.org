@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ config.title }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ config.description }}{% endblock %}">
+
+  {# Open Graph / social #}
+  <meta property="og:title" content="{% block og_title %}{{ config.title }}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{{ config.description }}{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ current_url | default(value=config.base_url) }}">
+  <meta property="og:image" content="{{ get_url(path='images/siot-logo-square.png', cachebust=true) }}">
+  <meta name="twitter:card" content="summary">
+
+  {# Fonts: Inter + JetBrains Mono via Google Fonts #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ get_url(path='main.css', cachebust=true) }}">
+  <link rel="icon" type="image/svg+xml" href="{{ get_url(path='images/siot-logo-square.svg') }}">
+  <link rel="icon" type="image/png" sizes="64x64" href="{{ get_url(path='images/favicon.png') }}">
+  {% if config.generate_feeds %}
+    <link rel="alternate" type="application/atom+xml" title="{{ config.title }} feed" href="{{ get_url(path='atom.xml', trailing_slash=false) }}">
+  {% endif %}
+
+  {% block head_extra %}{% endblock %}
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="{{ get_url(path='/') }}" class="brand">
+        <img src="{{ get_url(path='images/siot-logo.svg') }}" alt="Simple IoT">
+        <span class="brand__tagline">Simple IoT</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav">
+        <a href="{{ get_url(path='blog/') }}">Blog</a>
+        <a href="{{ get_url(path='videos/') }}">Videos</a>
+        <a href="{{ get_url(path='community/') }}">Community</a>
+        <a href="{{ config.extra.docs_url }}" target="_blank" rel="noopener">Docs</a>
+        <a href="{{ config.extra.github_url }}" class="nav-cta" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__subscribe">
+        <h3>Project updates</h3>
+        <p>Occasional notes on releases, design decisions, and what we're
+          learning from real deployments. Unsubscribe anytime.</p>
+        <p class="site-footer__subscribe-cta">
+          <a href="{{ config.extra.newsletter_url }}" class="btn btn--primary" target="_blank" rel="noopener">Subscribe to the newsletter</a>
+        </p>
+      </div>
+      <div class="site-footer__bottom">
+        <div>
+          <span class="siot-mark">Simple IoT</span> &middot; {{ config.extra.copyright_year }} &middot;
+          Apache 2.0
+        </div>
+        <div>
+          <a href="{{ config.extra.github_url }}" target="_blank" rel="noopener">GitHub</a>
+          &nbsp;&middot;&nbsp;
+          <a href="{{ config.extra.docs_url }}" target="_blank" rel="noopener">Docs</a>
+          &nbsp;&middot;&nbsp;
+          <a href="{{ config.extra.forum_url }}" target="_blank" rel="noopener">Forum</a>
+          &nbsp;&middot;&nbsp;
+          <a href="{{ config.extra.youtube_url }}" target="_blank" rel="noopener">YouTube</a>
+          &nbsp;&middot;&nbsp;
+          <a href="{{ get_url(path='blog/') }}">Blog</a>
+          {% if config.generate_feeds %}
+            &nbsp;&middot;&nbsp;
+            <a href="{{ get_url(path='atom.xml', trailing_slash=false) }}">RSS</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var toggle = document.querySelector('.nav-toggle');
+      var nav = document.getElementById('site-nav');
+      if (!toggle || !nav) return;
+      toggle.addEventListener('click', function () {
+        var open = toggle.classList.toggle('open');
+        nav.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      nav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          toggle.classList.remove('open');
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

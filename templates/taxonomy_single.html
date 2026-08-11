@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{ term.name }} — {{ taxonomy.name | capitalize }} — {{ config.title }}{% endblock %}
+
+{% block content %}
+<section class="page">
+  <div class="container">
+    <div class="page__inner">
+      <p class="meta" style="margin-top: 0;">{{ taxonomy.name | capitalize }}</p>
+      <h1>{{ term.name }}</h1>
+      <ul class="posts">
+        {% for page in term.pages %}
+          <li class="post-card">
+            {% if page.date %}
+              <p class="meta">{{ page.date | date(format="%Y-%m-%d") }}</p>
+            {% endif %}
+            <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+            {% if page.description or page.summary %}
+              <p class="post-card__excerpt">{{ page.description | default(value=page.summary | striptags | truncate(length=240)) }}</p>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}

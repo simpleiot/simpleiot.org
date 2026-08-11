@@ -1,0 +1,316 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="container">
+    <div class="hero__eyebrow">Open source IoT platform</div>
+    <h1>Connected products, <em class="hero-emphasis">without the complexity</em></h1>
+    <p class="hero__lede">
+      Simple IoT lets you add remote sensor data, telemetry, configuration, and
+      device management to your product. One binary runs in the cloud and on
+      your edge devices, keeping configuration and state synchronized in both
+      directions, even over slow or intermittent connections.
+    </p>
+    <div class="hero__cta">
+      <a href="#get-started" class="btn btn--primary">Get started →</a>
+      <a href="{{ config.extra.github_url }}" class="btn btn--ghost" target="_blank" rel="noopener">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head__eyebrow">What you get</div>
+      <h2>A complete platform in a single binary.</h2>
+      <p class="section-head__lede">
+        Simple IoT grew out of shipping real connected products. Everything
+        below is included in one self-contained application with no external
+        dependencies, so a single engineer can build and deploy a custom IoT
+        system.
+      </p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card__icon">01 / Sync</div>
+        <h3>Data that flows both ways</h3>
+        <p>Configuration and state can change at the edge or in the cloud. Simple IoT
+          merges the changes efficiently and keeps every instance in agreement, so
+          you are never reconciling two sources of truth by hand.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">02 / UI</div>
+        <h3>A user facing portal</h3>
+        <p>A web UI for viewing live values and editing configuration, with users,
+          groups, and permissions built in. Give customers access to their own
+          devices without building a portal from scratch.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">03 / Rules</div>
+        <h3>Rules and notifications</h3>
+        <p>A rules engine runs on every instance, in the cloud or on the gateway.
+          Trigger notifications through Twilio or email, or write points back into
+          the system to control equipment.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">04 / I/O</div>
+        <h3>Industrial protocols included</h3>
+        <p>Modbus client and server, CAN bus, 1-Wire, GPS, USB and serial devices,
+          Particle.io, and Shelly. Connect to the hardware already in the field
+          instead of writing another integration layer.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">05 / Extend</div>
+        <h3>Extend it in any language</h3>
+        <p>Every instance speaks NATS. Add a Python script, a C++ machine learning
+          process, or a Go service alongside Simple IoT and give it full access to
+          configuration and state.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">06 / Store</div>
+        <h3>Storage built in, no database to run</h3>
+        <p>Instances, users, groups, rules, and configuration live in a flexible
+          graph, persisted by the NATS JetStream server embedded in the same
+          binary. Forward history to VictoriaMetrics or InfluxDB when you want
+          long term trends and dashboards.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head__eyebrow">Why this is hard</div>
+      <h2>Most IoT projects take longer than they should.</h2>
+      <p class="section-head__lede">
+        The fundamental problem is moving data from remote locations to a place
+        where people can use it, and moving configuration back the other way in
+        real time. These are the constraints that shaped Simple IoT.
+      </p>
+    </div>
+
+    <div class="pain">
+      <div class="pain__item">
+        <h3>Changes happen everywhere</h3>
+        <p>A technician edits settings on a local display, a customer changes them in
+          the browser, and a rule changes them again at 3 a.m. All of it has to
+          converge on the same answer.</p>
+      </div>
+      <div class="pain__item">
+        <h3>Connectivity is not a given</h3>
+        <p>Cat-M modems give you well under 100 Kb/sec, and coverage comes and goes.
+          Devices need to keep working while offline and catch up when the link
+          returns.</p>
+      </div>
+      <div class="pain__item">
+        <h3>Two codebases, two mental models</h3>
+        <p>Writing separate cloud and edge applications doubles the work and the bugs.
+          Running the same application in both places removes an entire class of
+          problems.</p>
+      </div>
+      <div class="pain__item">
+        <h3>Operations should be a small job</h3>
+        <p>A 10 to 1000 device system does not need twenty microservices. One binary
+          on one server that you can rebuild quickly is often more reliable and far
+          less work.</p>
+      </div>
+      <div class="pain__item">
+        <h3>Off the shelf platforms pull in two directions</h3>
+        <p>Device clouds handle connectivity but leave the customer portal to you.
+          Hyperscaler IoT stacks handle scale you may never need, at a cost in
+          moving parts.</p>
+      </div>
+      <div class="pain__item">
+        <h3>Custom systems deserve real tools</h3>
+        <p>There is lasting value in programming a system rather than assembling it
+          from drag and drop blocks. That works best when the building blocks are
+          simple and open.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" id="core-ideas">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head__eyebrow">Core ideas</div>
+      <h2>Six ideas that make the rest simple.</h2>
+      <p class="section-head__lede">
+        Building Simple IoT has been a process of peeling layers off a fairly
+        complex system. These are the ideas that survived, and together they
+        make Simple IoT a distributed graph database tuned for IoT datasets.
+      </p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card__icon">01</div>
+        <h3>One kind of data</h3>
+        <p>Configuration and state are stored and synchronized the same way, so there
+          is a single path for every change in the system.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">02</div>
+        <h3>Nodes and points</h3>
+        <p>Everything is described with two simple types. Points carry the metadata
+          needed to merge changes from any instance without conflict.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">03</div>
+        <h3>Organized as a graph</h3>
+        <p>A node can belong to more than one parent, which maps cleanly onto real
+          fleets, sites, customers, and permissions.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">04</div>
+        <h3>Everything flows through NATS</h3>
+        <p>A message bus at the center means any process, in any language, can observe
+          and change the system through one API. The same server stores the data,
+          so points are never translated into a second data model.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">05</div>
+        <h3>The same application everywhere</h3>
+        <p>Cloud, local server, or edge gateway all run the same binary, so logic can
+          move to wherever it makes the most sense.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon">06</div>
+        <h3>Sync comes for free</h3>
+        <p>Connect an instance to an upstream and common data synchronizes
+          automatically, at any number of levels.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="get-started">
+  <div class="container">
+    <div class="demo">
+      <div class="demo__copy">
+        <div class="section-head__eyebrow">Try it</div>
+        <h2>Running in about a minute.</h2>
+        <p>
+          Simple IoT is a self contained binary with no dependencies. Download the
+          release for your platform, run it, and open the UI in a browser. The
+          machine you are reading this on is a fine place to start, as is a
+          Raspberry Pi or any other embedded Linux board.
+        </p>
+        <p>
+          It runs on ARM, x86, and RISC-V Linux, along with macOS and Windows.
+          On Linux, <code>siot install</code> sets up a systemd service, and
+          <code>siot update</code> keeps it current.
+        </p>
+        <p>
+          <a href="{{ config.extra.docs_url }}/docs/user/installation.html" class="btn btn--ghost" target="_blank"
+            rel="noopener">Installation guide →</a>
+        </p>
+      </div>
+      <div class="demo__code">
+        <div class="demo__code-header">~/siot &nbsp;·&nbsp; bash</div>
+        {# whitespace inside <pre> is rendered verbatim — load from a file so
+          HTML formatters can never re-indent it #}
+          <pre><code class="language-sh">{{ load_data(path="static/snippets/quickstart.sh", format="plain") }}</code>
+          </pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-head__eyebrow">Where it fits</div>
+      <h2>Built for the long tail of IoT.</h2>
+      <p class="section-head__lede">
+        Simple IoT is aimed at systems in the 10 to 1000 device range where you
+        run embedded Linux at the edge and have configuration and state worth
+        synchronizing. Teams are using it for work like this today.
+      </p>
+    </div>
+
+    <div class="pain">
+      <div class="pain__item">
+        <h3>Irrigation monitoring</h3>
+        <p>Pumps, valves, and tank levels spread across a property, reporting back
+          over a modem and controllable from anywhere.</p>
+      </div>
+      <div class="pain__item">
+        <h3>Building and alarm control</h3>
+        <p>Schedules, setpoints, and alerts that keep working when the connection to
+          the cloud drops.</p>
+      </div>
+      <div class="pain__item">
+        <h3>Industrial vehicles and equipment</h3>
+        <p>Commercial mowers, agricultural machinery, and other mobile assets that
+          need telemetry and remote configuration.</p>
+      </div>
+      <div class="pain__item">
+        <h3>Factory automation</h3>
+        <p>Modbus and CAN devices on the plant floor, surfaced in one place with rules
+          running locally.</p>
+      </div>
+      <div class="pain__item">
+        <h3>A distributed config store</h3>
+        <p>Run Simple IoT alongside an existing application purely for the
+          synchronized state and configuration it provides over NATS.</p>
+      </div>
+      <div class="pain__item">
+        <h3>Go packages for your own app</h3>
+        <p>Use the Modbus, serial, and other packages on their own if that is all you
+          need. See the <a href="{{ config.extra.godoc_url }}" target="_blank" rel="noopener">package
+            documentation</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="container">
+    <h2>Start building your system</h2>
+    <p>
+      Simple IoT is Apache 2.0 licensed and has been used on real products for
+      several years. The documentation covers installation, the data model, the
+      NATS API, and how to extend the system with your own clients.
+    </p>
+    <div class="hero__cta" style="justify-content: center;">
+      <a href="{{ config.extra.docs_url }}" class="btn btn--primary" target="_blank" rel="noopener">Read the docs →</a>
+      <a href="{{ get_url(path='videos/') }}" class="btn btn--ghost">Watch the demos</a>
+    </div>
+  </div>
+</section>
+
+<section class="sponsors">
+  <div class="container">
+    <div class="section-head__eyebrow">Sponsors</div>
+    <h3><span class="siot-mark">Simple IoT</span> is supported by</h3>
+    <div class="sponsors__logos">
+      <a href="https://bec-systems.com/" class="sponsors__logo" target="_blank" rel="noopener" aria-label="BEC Systems">
+        <img src="{{ get_url(path='images/bec-logo.svg') }}" alt="BEC Systems" width="220">
+      </a>
+    </div>
+    <p class="sponsors__note">
+      Interested in supporting the project?
+      <a href="mailto:{{ config.extra.contact_email }}?subject=Simple%20IoT%20sponsorship">Get in touch →</a>
+    </p>
+  </div>
+</section>
+
+<section class="contact-strip">
+  <div class="container">
+    <h3>Questions, ideas, or feedback?</h3>
+    <p>We would like to hear from you, whether you are evaluating Simple IoT,
+      already running it, or want to contribute. If you use the project, telling
+      us about it genuinely helps.</p>
+    <div class="hero__cta" style="justify-content: center;">
+      <a href="{{ config.extra.forum_url }}" class="btn btn--primary" target="_blank" rel="noopener">Join the
+        forum →</a>
+      <a href="{{ get_url(path='community/') }}" class="btn btn--ghost">All the ways to connect</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

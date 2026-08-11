@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} — {{ config.title }}{% endblock %}
+{% block description %}{{ page.description | default(value=config.description) | striptags | truncate(length=200) }}{% endblock %}
+{% block og_title %}{{ page.title }} — {{ config.title }}{% endblock %}
+{% block og_description %}{{ page.description | default(value=config.description) | striptags | truncate(length=200) }}{% endblock %}
+
+{% block content %}
+{% set channel_id = config.extra.youtube_channel_id %}
+{% set feed = load_data(url="https://www.youtube.com/feeds/videos.xml?channel_id=" ~ channel_id, format="xml", required=false) %}
+<article class="page videos-page">
+  <div class="container">
+    <div class="page__inner">
+      <h1>{{ page.title }}</h1>
+
+      <p>
+        Demos, walkthroughs, and design discussions from the Simple IoT project.
+        The full collection lives on the
+        <a href="{{ config.extra.youtube_url }}" target="_blank" rel="noopener">Simple IoT YouTube channel</a>.
+      </p>
+    </div>
+  </div>
+
+  {% if feed and feed.feed and feed.feed.entry %}
+    {% set entries = feed.feed.entry %}
+    {% if entries.0 is not defined %}{% set entries = [entries] %}{% endif %}
+
+    <div class="video-list">
+      {% for entry in entries %}
+        <section class="video-item">
+          <div class="video-item__head">
+            <h2><a href="https://www.youtube.com/watch?v={{ entry.videoId }}" target="_blank" rel="noopener">{{ entry.title }}</a></h2>
+            {% if entry.published %}
+              <time datetime="{{ entry.published }}">{{ entry.published | date(format="%b %-d, %Y") }}</time>
+            {% endif %}
+          </div>
+          <div class="video-player">
+            <iframe
+              src="https://www.youtube.com/embed/{{ entry.videoId }}"
+              title="{{ entry.title }}"
+              loading="lazy"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen></iframe>
+          </div>
+        </section>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="container">
+      <div class="page__inner">
+        <p class="post-card__excerpt">
+          The video list could not be loaded right now. Head to the
+          <a href="{{ config.extra.youtube_url }}" target="_blank" rel="noopener">channel</a> to watch.
+        </p>
+      </div>
+    </div>
+  {% endif %}
+</article>
+{% endblock %}

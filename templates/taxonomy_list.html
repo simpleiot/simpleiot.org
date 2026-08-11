@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ taxonomy.name | capitalize }} — {{ config.title }}{% endblock %}
+
+{% block content %}
+<section class="page">
+  <div class="container">
+    <div class="page__inner">
+      <h1>{{ taxonomy.name | capitalize }}</h1>
+      <ul class="posts">
+        {% for term in terms %}
+          <li class="post-card">
+            <h2><a href="{{ term.permalink }}">{{ term.name }}</a></h2>
+            <p class="post-card__excerpt">{{ term.pages | length }} post{{ term.pages | length | pluralize }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}
