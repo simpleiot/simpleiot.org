@@ -730,8 +730,31 @@ main { flex: 1; }
   }
 }
 
-.site-footer__subscribe-cta {
-  margin: 0;
+.subscribe-form {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+
+  input[type="email"] {
+    flex: 1 1 220px;
+    min-width: 0;
+    padding: 0.55rem 0.85rem;
+    background: $bg-elev;
+    border: 1px solid $border-bright;
+    border-radius: $radius-sm;
+    color: $text;
+    font: inherit;
+
+    &::placeholder { color: $text-dim; }
+
+    &:focus {
+      outline: none;
+      border-color: $accent;
+      box-shadow: 0 0 0 3px $accent-glow;
+    }
+  }
+
+  .btn { flex-shrink: 0; }
 }
 
 .site-footer__bottom {

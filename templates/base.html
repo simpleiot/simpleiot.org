@@ -26,6 +26,9 @@
     <link rel="alternate" type="application/atom+xml" title="{{ config.title }} feed" href="{{ get_url(path='atom.xml', trailing_slash=false) }}">
   {% endif %}
 
+  {# Fathom Analytics #}
+  <script src="https://cdn.usefathom.com/script.js" data-site="{{ config.extra.fathom_site_id }}" defer></script>
+
   {% block head_extra %}{% endblock %}
 </head>
 <body>
@@ -58,9 +61,19 @@
         <h3>Project updates</h3>
         <p>Occasional notes on releases, design decisions, and what we're
           learning from real deployments. Unsubscribe anytime.</p>
-        <p class="site-footer__subscribe-cta">
-          <a href="{{ config.extra.newsletter_url }}" class="btn btn--primary" target="_blank" rel="noopener">Subscribe to the newsletter</a>
-        </p>
+        <form
+          action="{{ config.extra.newsletter_form_action }}"
+          method="post"
+          target="_blank"
+          class="subscribe-form">
+          <input
+            type="email"
+            name="email_address"
+            placeholder="you@example.com"
+            aria-label="Email address"
+            required>
+          <button type="submit" class="btn btn--primary">Subscribe</button>
+        </form>
       </div>
       <div class="site-footer__bottom">
         <div>
