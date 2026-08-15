@@ -70,7 +70,9 @@ img, svg { max-width: 100%; height: auto; display: block; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $sans;
-  font-weight: 700;
+  // Inter 700 blooms against the dark background; 600 renders closer to how
+  // a 700 heading looks on a white page.
+  font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.2;
   margin: 2rem 0 1rem;
@@ -355,18 +357,19 @@ main { flex: 1; }
 
   h1 {
     font-size: clamp(2.5rem, 6vw, 4rem);
+    letter-spacing: -0.03em;
     line-height: 1.05;
     margin-bottom: 1.5rem;
     max-width: 18ch;
   }
 
   .hero-emphasis {
-    font-family: 'Fraunces', 'Iowan Old Style', 'Georgia', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-optical-sizing: auto;
+    font-family: $mono;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.78em;
+    letter-spacing: -0.04em;
     color: $accent;
-    letter-spacing: -0.01em;
   }
 
   &__lede {
