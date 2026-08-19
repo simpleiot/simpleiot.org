@@ -33,8 +33,10 @@
                 <p class="meta">{{ page.date | date(format="%Y-%m-%d") }}</p>
               {% endif %}
               <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
-              {% if page.description or page.summary %}
-                <p class="post-card__excerpt">{{ page.description | default(value=page.summary | striptags | truncate(length=240)) }}</p>
+              {% if page.description %}
+                <p class="post-card__excerpt">{{ page.description }}</p>
+              {% elif page.summary %}
+                <p class="post-card__excerpt">{{ page.summary | striptags | truncate(length=240) }}</p>
               {% endif %}
             </li>
           {% endfor %}

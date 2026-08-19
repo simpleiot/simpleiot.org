@@ -49,6 +49,10 @@ Standard Zola layout; the non-obvious parts:
 - **Styling**: single SCSS bundle at `sass/main.scss`, compiled by Zola. Custom
   dark theme (orange `#ff6600` accent on near-black slate, from the sIoT logo);
   all colors are SCSS variables at the top of the file.
+- **Logo**: `scripts/gen-logo.py` regenerates the logo SVGs in `static/images/`
+  from Fira Code glyph outlines (fontTools): the `[siot]` wordmark (wide for
+  the header, square for og:image) and a `[s]` icon for favicons. Its
+  docstring has the `rsvg-convert` commands for the PNG/favicon derivatives.
 - **Blog**: `content/blog/`, filenames prefixed `YYYY-MM-DD-slug.md`, TOML
   frontmatter with `date` and `[taxonomies] tags`. The `tags` taxonomy and the
   blog section both generate Atom feeds.
