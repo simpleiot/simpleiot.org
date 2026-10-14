@@ -24,8 +24,8 @@ The [video demo](https://youtu.be/lqM4MPVNHsc) walks through how this works.
 A rule on the server watches a push button on the Pi 5 and then turns on an LED
 when the button is pressed. This demonstrates a round trip of data from the Pi 5
 switch, to the server, through the rules, and then back to the Pi 5 LED. The LED
-lights nearly instantaneously when the button is pressed. The measured round
-trip is about XX ms.
+lights nearly instantaneously when the button is pressed. The round trip is
+barely perceptible, roughly 100 ms.
 
 If the connection drops, NATS JetStream queues data at both ends, and
 functionality resumes nearly instantly once the connection returns.
