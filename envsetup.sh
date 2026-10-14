@@ -26,6 +26,12 @@ siot_web_build() {
 	zola build
 }
 
+siot_web_videos() {
+	echo "Updating data/videos.json from YouTube..."
+	cd "$SCRIPT_DIR" || return 1
+	python3 scripts/update-videos.py
+}
+
 siot_web_check() {
 	echo "Checking links and templates..."
 	cd "$SCRIPT_DIR" || return 1
@@ -37,4 +43,5 @@ echo "Available commands:"
 echo "  siot_web_deploy - Build and deploy to $DEPLOY_TARGET"
 echo "  siot_web_serve  - Start local development server"
 echo "  siot_web_build  - Build the site into public/"
+echo "  siot_web_videos - Update the videos list from YouTube"
 echo "  siot_web_check  - Validate links and templates"

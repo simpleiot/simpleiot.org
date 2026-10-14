@@ -1,0 +1,119 @@
+{
+  "videos": [
+    {
+      "id": "lqM4MPVNHsc",
+      "title": "Real-time edge to browser",
+      "date": "2026-10-14"
+    },
+    {
+      "id": "ffo5BhcioWY",
+      "title": "The easiest way to get data from MQTT to Grafana",
+      "date": "2026-08-20"
+    },
+    {
+      "id": "THmQkxWp9fo",
+      "title": "Simple IoT Offline Synchronization",
+      "date": "2026-08-19"
+    },
+    {
+      "id": "dPWjXbnQ7ww",
+      "title": "Simulating Modbus servers and clients using Simple IoT",
+      "date": "2025-09-06"
+    },
+    {
+      "id": "L74Bt-lsKGQ",
+      "title": "Point dataflow in the Zephyr Simple IoT application",
+      "date": "2025-02-07"
+    },
+    {
+      "id": "pb_a6oEdFJI",
+      "title": "Simple IoT Rules Demo",
+      "date": "2024-06-26"
+    },
+    {
+      "id": "f4D6MS6bq5U",
+      "title": "How SIOT tags make managing IoT data easier",
+      "date": "2024-03-20"
+    },
+    {
+      "id": "SoXYVS6vT2o",
+      "title": "Simple IoT Raw Node UI",
+      "date": "2023-12-19"
+    },
+    {
+      "id": "idIyr4zros4",
+      "title": "UI Data Loading ideas for Simple IoT",
+      "date": "2023-12-14"
+    },
+    {
+      "id": "WllM0acCOss",
+      "title": "Creating an Alarm Clock with Simple IoT schedules",
+      "date": "2023-08-28"
+    },
+    {
+      "id": "7qUxJusaGHg",
+      "title": "Using InfluxDB and Grafana with Simple IoT",
+      "date": "2023-05-24"
+    },
+    {
+      "id": "sbY1gGBkt58",
+      "title": "How to Structure Data in IoT Systems",
+      "date": "2023-02-02"
+    },
+    {
+      "id": "_Nrs2_l62_Q",
+      "title": "Hot reloading the Simple IoT UI",
+      "date": "2022-12-22"
+    },
+    {
+      "id": "pH8GPbjt-SI",
+      "title": "Setting up a Simple IoT System in the cloud",
+      "date": "2022-11-17"
+    },
+    {
+      "id": "MG4a_EGP90k",
+      "title": "Simple IoT Client Overview",
+      "date": "2022-10-15"
+    },
+    {
+      "id": "tqbLZ9CSzRU",
+      "title": "Improved Copy/Paste for Node IDs in Rule Actions/Conditions.",
+      "date": "2022-05-31"
+    },
+    {
+      "id": "ZII9pzx9akY",
+      "title": "The New Simple IoT Duplicate Node Feature",
+      "date": "2022-04-07"
+    },
+    {
+      "id": "-1PuBoTAzPE",
+      "title": "Simple IoT Integration with PLC Using Modbus",
+      "date": "2021-12-17"
+    },
+    {
+      "id": "6xB-gXUynQc",
+      "title": "Simple IoT upstream synchronization support",
+      "date": "2021-07-23"
+    },
+    {
+      "id": "Z3FVjtnoWoY",
+      "title": "Simple IoT SMS Notifications",
+      "date": "2021-04-16"
+    },
+    {
+      "id": "iIZWxr482mI",
+      "title": "Simple IoT Modbus Demo",
+      "date": "2021-03-09"
+    },
+    {
+      "id": "0ktVCPU74mw",
+      "title": "Simple IoT Tree Based UI",
+      "date": "2020-11-28"
+    },
+    {
+      "id": "REZ6DKvRVv0",
+      "title": "Using NATS.io to efficiently push data to IoT devices",
+      "date": "2020-10-07"
+    }
+  ]
+}

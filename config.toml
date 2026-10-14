@@ -27,7 +27,6 @@ releases_url = "https://github.com/simpleiot/simpleiot/releases"
 docs_url = "https://docs.simpleiot.org"
 forum_url = "https://community.tmpdir.org/c/simple-iot/5"
 youtube_url = "https://www.youtube.com/@simple-iot"
-youtube_channel_id = "UCDAtjx0utMbJCexZ7Q5CbNg"
 newsletter_url = "https://tmpdir.ck.page/196d1fb480"
 # POST target of the Kit form embedded via tmpdir.kit.com/e672f4de81/index.js
 newsletter_form_action = "https://app.kit.com/forms/9800364/subscriptions"
