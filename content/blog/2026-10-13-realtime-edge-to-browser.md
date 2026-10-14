@@ -14,7 +14,7 @@ rich, efficient interaction with remote devices, where remote state updates
 instantly and configuration changes take effect right away.
 
 In the demo below, we have SIOT running on a Raspberry Pi 5 connected to another
-SIOT running on a cloud server.
+SIOT instance running on a cloud server.
 
 ![Demo setup: a Raspberry Pi 5 with a push button and LED syncs to the siot3 server, and a browser connects to both over NATS WebSocket](/images/blog/realtime-edge-to-browser-setup.svg)
 
