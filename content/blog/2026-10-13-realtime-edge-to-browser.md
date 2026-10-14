@@ -2,7 +2,6 @@
 title = "Real-time edge-to-browser connectivity"
 description = "Simple IoT now streams device state from the edge to the browser in real time over NATS, with offline queuing when the connection drops."
 date = 2026-10-13
-draft = true
 [taxonomies]
 tags = ["sync", "ui", "release"]
 +++
