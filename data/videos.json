@@ -1,6 +1,11 @@
 {
   "videos": [
     {
+      "id": "nTNtVRTNRHQ",
+      "title": "How Simple IoT scales to large data sets in the UI",
+      "date": "2026-10-30"
+    },
+    {
       "id": "lqM4MPVNHsc",
       "title": "Real-time edge to browser",
       "date": "2026-10-14"
