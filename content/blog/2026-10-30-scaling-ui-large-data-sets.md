@@ -34,6 +34,10 @@ UI fetches that node's children and subscribes to the nodes on screen.
 Collapsing a node ends those subscriptions. The browser's work follows what you
 are viewing, so it stays small even as the tree grows.
 
+[NATS](https://nats.io/) subscriptions make this control simple. Each node has
+its own subject, so the UI chooses what data it sees by subscribing to the
+subjects for the nodes on screen, and the server sends nothing else.
+
 The tree does this work for us. Every SIOT system already has this structure, so
 the UI needs no separate paging or caching scheme. The
 [frontend reference](https://docs.simpleiot.org/docs/ref/frontend.html) covers
